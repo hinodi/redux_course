@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, Button, Text} from 'react-native';
 import {connect} from 'react-redux';
-import {increment, decrement} from './src/redux/actions';
+import {increment, incrementAsync, decrement} from './src/redux/actions';
 import {INCREMENT} from './src/redux/actionTypes';
 import store from './src/redux/store';
 
@@ -11,6 +11,7 @@ class App extends React.Component {
       <SafeAreaView style={styles.container}>
         <Text style={styles.text}>{this.props.number}</Text>
         <Button title="Increase" onPress={this.props.increment} />
+        <Button title="Increase Async" onPress={this.props.incrementAsync} />
         <Button
           title="Increase"
           onPress={() => {
@@ -40,4 +41,6 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return state;
 };
-export default connect(mapStateToProps, {increment, decrement})(App);
+export default connect(mapStateToProps, {increment, incrementAsync, decrement})(
+  App,
+);
